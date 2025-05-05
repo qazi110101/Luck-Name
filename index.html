@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Name Vibes Tool</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00f7ff44;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #00f7ff;
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      background: #111;
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #00f7ff66;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shadow Name Vibes</h1>
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <button onclick="generateVibe()">Get My Vibe</button>
+    <div id="result" class="result" style="display: none;"></div>
+  </div>
+
+  <script>
+    const meanings = {
+      "hamza": "Strong and steadfast",
+      "ali": "Noble and brave",
+      "fatima": "Captivating and pure",
+      "ayesha": "Alive and well-living",
+      "ahmed": "Most commendable",
+      "zainab": "Father's precious gem"
+    };
+
+    const vibes = [
+      "The Silent Billionaire",
+      "The Hidden Genius",
+      "The Digital King",
+      "Queen of Shadows",
+      "Future Mogul",
+      "Mysterious Leader",
+      "Shadow Hacker",
+      "Neon Visionary"
+    ];
+
+    const quotes = [
+      "never follows shadows, becomes one.",
+      "rules the world quietly.",
+      "turns dreams into digital empires.",
+      "walks with calm, strikes with purpose.",
+      "was born to shine silently.",
+      "makes moves, not noise.",
+      "codes in shadows, shines in silence.",
+      "dreams in data, executes in silence."
+    ];
+
+    const colors = [
+      "Midnight Blue",
+      "Crimson Red",
+      "Shadow Black",
+      "Cyber Purple",
+      "Neon Green",
+      "Electric Orange"
+    ];
+
+    const emojis = ["", "", "", "", "", ""];
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function generateVibe() {
+      const name = document.getElementById("nameInput").value.trim().toLowerCase();
+      if (!name) return;
+
+      const meaning = meanings[name] || "Unique and powerful";
+      const vibe = vibes[Math.floor(Math.random() * vibes.length)];
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      const luckyNumber = Math.floor(Math.random() * 9) + 1;
+      const luckyColor = colors[Math.floor(Math.random() * colors.length)];
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const resultHTML = `
+        <h2>${capitalize(name)}</h2>
+        <p><strong>Meaning:</strong> ${meaning}</p>
+        <p><strong>Vibe:</strong> "${vibe}"</p>
+        <p><strong>Quote:</strong> "${capitalize(name)} ${quote}"</p>
+        <p><strong>Lucky Number:</strong> ${luckyNumber}</p>
+        <p><strong>Lucky Color:</strong> ${luckyColor}</p>
+        <p><strong>Emoji:</strong> ${emoji}</p>
+      `;
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = resultHTML;
+      resultDiv.style.display = "block";
+    }
+  </script>
+</body>
+</html>
